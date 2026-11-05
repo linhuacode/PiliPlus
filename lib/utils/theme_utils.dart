@@ -4,6 +4,9 @@ import 'package:PiliPlus/utils/font_utils.dart';
 import 'package:PiliPlus/utils/storage_pref.dart';
 import 'package:cupertino_ui/cupertino_ui.dart' show CupertinoThemeData;
 import 'package:flutter/foundation.dart' show PlatformDispatcher;
+
+import 'dart:io' show Platform;
+
 import 'package:material_ui/material_ui.dart';
 
 abstract final class ThemeUtils {
@@ -59,6 +62,9 @@ abstract final class ThemeUtils {
 
     final theme = ThemeData(
       useMaterial3: true,
+      splashFactory: Platform.isAndroid ? NoSplash.splashFactory : null,
+      splashColor: Platform.isAndroid ? Colors.transparent : null,
+      highlightColor: Platform.isAndroid ? Colors.transparent : null,
       colorScheme: colorScheme,
       fontFamily: fontFamily,
       textTheme: textTheme,
